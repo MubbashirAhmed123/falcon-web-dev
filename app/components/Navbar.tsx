@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Poppins } from "next/font/google";
+import { Home, Info, Briefcase, Phone } from "lucide-react";
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -44,36 +46,41 @@ export default function Navbar() {
 
         {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-4 md:space-x-6 lg:space-x-8 text-white">
-          <Link
-            href="#home"
-            className="relative px-3 py-2 text-white font-medium text-sm md:text-base tracking-wide
-                       after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white
-                       hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200"
-          >
-            Home
-          </Link>
+        <Link
+  href="#home"
+  className="flex items-center gap-2 relative px-3 py-2 text-white font-medium text-sm md:text-base tracking-wide
+             after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white
+             hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200"
+>
+  <Home size={18} />
+  Home
+</Link>
+
           <Link
             href="#about"
-            className="relative px-3 py-2 text-white font-medium text-sm md:text-base tracking-wide
-                       after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white
-                       hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200"
+            className="flex items-center gap-2 relative px-3 py-2 text-white font-medium text-sm md:text-base tracking-wide
+             after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white
+             hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200"
           >
+            <Info size={18} />
             About
           </Link>
           <Link
             href="#services"
-            className="relative px-3 py-2 text-white font-medium text-sm md:text-base tracking-wide
-                       after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white
-                       hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200"
+            className="flex items-center gap-2 relative px-3 py-2 text-white font-medium text-sm md:text-base tracking-wide
+             after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white
+             hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200"
           >
+            <Briefcase size={18} />
             Services
           </Link>
           <Link
             href="#contact"
-            className="relative px-3 py-2 text-white font-medium text-sm md:text-base tracking-wide
-                       after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white
-                       hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200"
+            className="flex items-center gap-2 relative px-3 py-2 text-white font-medium text-sm md:text-base tracking-wide
+             after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white
+             hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200"
           >
+             <Phone size={18} />
             Contact
           </Link>
         </div>
