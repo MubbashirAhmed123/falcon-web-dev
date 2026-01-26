@@ -1,4 +1,5 @@
 import About from "./components/About";
+import Contact from "./components/Contact";
 import HomePage from "./components/Home";
 import Navbar from "./components/Navbar";
 import ServicesPage from "./components/Services";
@@ -16,6 +17,7 @@ export default function Home() {
     <About />
     <ServicesPage/>
     <TechnologiesPage/>
+    <Contact/>
    </div>
   );
 }
