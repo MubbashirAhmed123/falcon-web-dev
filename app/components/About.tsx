@@ -85,7 +85,7 @@ export default function About() {
                 />
                 <p className="text-gray-700">
                   <strong className="text-gray-900">Our Process:</strong>{" "}
-                  Research → Design → Develop → Deliver.
+                  Research → Design → Develop → Testing → Deliver.
                 </p>
               </motion.div>
             </div>

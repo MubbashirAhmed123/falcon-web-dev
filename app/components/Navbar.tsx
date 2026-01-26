@@ -16,18 +16,17 @@ const poppins = Poppins({
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [open]);
 
   const closeMenu = () => setOpen(false);
+
+  const handleNavClick = (href: string) => {
+    closeMenu();
+    const elementId = href.replace('#', '');
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <nav className={`${poppins.className} fixed top-0 left-0 w-full bg-[#1F2937] border-b border-gray-600 z-50 shadow-lg`}>
@@ -46,43 +45,43 @@ export default function Navbar() {
 
         {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-4 md:space-x-6 lg:space-x-8 text-white">
-        <Link
-  href="#home"
+        <button
+  onClick={() => handleNavClick('#home')}
   className="flex items-center gap-2 relative px-3 py-2 text-white font-medium text-sm md:text-base tracking-wide
              after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white
-             hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200"
+             hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200 bg-transparent border-none cursor-pointer"
 >
   <Home size={18} />
   Home
-</Link>
+</button>
 
-          <Link
-            href="#about"
+          <button
+            onClick={() => handleNavClick('#about')}
             className="flex items-center gap-2 relative px-3 py-2 text-white font-medium text-sm md:text-base tracking-wide
              after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white
-             hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200"
+             hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200 bg-transparent border-none cursor-pointer"
           >
             <Info size={18} />
             About
-          </Link>
-          <Link
-            href="#services"
+          </button>
+          <button
+            onClick={() => handleNavClick('#services')}
             className="flex items-center gap-2 relative px-3 py-2 text-white font-medium text-sm md:text-base tracking-wide
              after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white
-             hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200"
+             hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200 bg-transparent border-none cursor-pointer"
           >
             <Briefcase size={18} />
             Services
-          </Link>
-          <Link
-            href="#contact"
+          </button>
+          <button
+            onClick={() => handleNavClick('#contact')}
             className="flex items-center gap-2 relative px-3 py-2 text-white font-medium text-sm md:text-base tracking-wide
              after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white
-             hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200"
+             hover:after:w-full after:transition-all after:duration-300 hover:text-gray-200 bg-transparent border-none cursor-pointer"
           >
              <Phone size={18} />
             Contact
-          </Link>
+          </button>
         </div>
 
         {/* Desktop right Buttons */}
@@ -146,50 +145,46 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="md:hidden bg-gradient-to-b from-[#1F2937] to-[#374151] border-t border-gray-600 rounded-b-lg shadow-xl overflow-hidden"
+            className="md:hidden bg-gradient-to-b from-[#1F2937] to-[#374151] border-t border-gray-600 rounded-b-lg shadow-xl overflow-y-auto max-h-[calc(100vh-64px)]"
           >
-            <div className="px-6 py-8 space-y-6">
+            <div className="px-6 py-8 space-y-6 min-h-full">
               <div className="space-y-4">
-                <Link
-                  href="#home"
-                  onClick={closeMenu}
+                <button
+                  onClick={() => handleNavClick('#home')}
                   className="block relative text-white font-medium text-lg tracking-wide py-3 px-4 rounded-lg
                              hover:text-white hover:scale-105 transition-all duration-200
                              after:absolute after:left-4 after:bottom-2 after:h-[2px] after:w-0 after:bg-purple-400
-                             hover:after:w-3/4 after:transition-all after:duration-300"
+                             hover:after:w-3/4 after:transition-all after:duration-300 w-full text-left bg-transparent border-none cursor-pointer"
                 >
                   Home
-                </Link>
-                <Link
-                  href="#about"
-                  onClick={closeMenu}
+                </button>
+                <button
+                  onClick={() => handleNavClick('#about')}
                   className="block relative text-white font-medium text-lg tracking-wide py-3 px-4 rounded-lg
                              hover:text-white hover:scale-105 transition-all duration-200
                              after:absolute after:left-4 after:bottom-2 after:h-[2px] after:w-0 after:bg-purple-400
-                             hover:after:w-3/4 after:transition-all after:duration-300"
+                             hover:after:w-3/4 after:transition-all after:duration-300 w-full text-left bg-transparent border-none cursor-pointer"
                 >
                   About
-                </Link>
-                <Link
-                  href="#services"
-                  onClick={closeMenu}
+                </button>
+                <button
+                  onClick={() => handleNavClick('#services')}
                   className="block relative text-white font-medium text-lg tracking-wide py-3 px-4 rounded-lg
                              hover:text-white hover:scale-105 transition-all duration-200
                              after:absolute after:left-4 after:bottom-2 after:h-[2px] after:w-0 after:bg-purple-400
-                             hover:after:w-3/4 after:transition-all after:duration-300"
+                             hover:after:w-3/4 after:transition-all after:duration-300 w-full text-left bg-transparent border-none cursor-pointer"
                 >
                   Services
-                </Link>
-                <Link
-                  href="#contact"
-                  onClick={closeMenu}
+                </button>
+                <button
+                  onClick={() => handleNavClick('#contact')}
                   className="block relative text-white font-medium text-lg tracking-wide py-3 px-4 rounded-lg
                              hover:text-white hover:scale-105 transition-all duration-200
                              after:absolute after:left-4 after:bottom-2 after:h-[2px] after:w-0 after:bg-purple-400
-                             hover:after:w-3/4 after:transition-all after:duration-300"
+                             hover:after:w-3/4 after:transition-all after:duration-300 w-full text-left bg-transparent border-none cursor-pointer"
                 >
                   Contact
-                </Link>
+                </button>
               </div>
 
               <div className="pt-6 border-t border-gray-600 space-y-4">
